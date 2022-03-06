@@ -25,10 +25,8 @@ class LoginController extends Controller
     public function postLogin(Request $request)
     {
         if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){
-
+            return redirect(route('index'));
         }
-
-
     }
 
 

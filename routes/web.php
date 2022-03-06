@@ -19,3 +19,6 @@ Route::get('/', function () {
 
 Route::get('login', [\App\Http\Controllers\LoginController::class, 'viewLogin'])->name('login');
 Route::post('login', [\App\Http\Controllers\LoginController::class, 'postLogin']);
+
+Route::get('index', [\App\Http\Controllers\UserController::class, 'index'])->name('index');
+Route::post('addUser', [\App\Http\Controllers\UserController::class, 'postUser'])->name('addUser');
