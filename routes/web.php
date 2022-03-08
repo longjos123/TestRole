@@ -22,3 +22,4 @@ Route::post('login', [\App\Http\Controllers\LoginController::class, 'postLogin']
 
 Route::get('index', [\App\Http\Controllers\UserController::class, 'index'])->name('index');
 Route::post('addUser', [\App\Http\Controllers\UserController::class, 'postUser'])->name('addUser');
+Route::post('/search', [\App\Http\Controllers\UserController::class, 'getSearchAjaxUser'])->name('search');

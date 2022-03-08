@@ -1,12 +1,20 @@
 @extends('admin.layout.main')
 
 @section('content')
+    <div class="input-group">
+        <div class="form-outline">
+            <label for="form1">Search</label>
+            <input type="search" id="form1" class="form-control" style="width: 500px;" placeholder="Nhập fullname hoặc username..." />
+        </div>
+    </div>
+    <br>
     <table class="table">
         <thead>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Fullname</th>
             <th scope="col">Username</th>
+            <th scope="col">Avatar</th>
             <th scope="col">Email</th>
             <th scope="col" style="width: 350px;">Address</th>
             <th scope="col">Gender</th>
@@ -14,12 +22,13 @@
             <th scope="col" style="width: 200px;text-align: center">Action</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="list">
         @foreach($users as $key => $user)
             <tr>
                 <th scope="row">{{$key + 1}}</th>
                 <td>{{$user->fullname}}</td>
                 <td>{{$user->username}}</td>
+                <td><img src="{{asset($user->avatar)}}" width="70px" style="border-radius: 40px"/></td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->address}}</td>
                 <td>{{($user->gender == 1) ? 'Nam' : 'Nữ'}}</td>
@@ -106,6 +115,16 @@
                                     <input type="text" class="form-control" name="address" value="{{old('address')}}">
                                     @error('address')
                                         <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label class="form-label">Gender:</label>
+                                    <select name="gender" class="form-control">
+                                        <option value="1">Nam</option>
+                                        <option value="0">Nữ</option>
+                                    </select>
+                                    @error('address')
+                                    <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3 mt-3">
